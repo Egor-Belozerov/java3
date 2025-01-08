@@ -1,0 +1,29 @@
+import java.util.Stack;
+import java.util.Scanner;
+
+public class ReverseDigits {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите число: ");
+        int number = scanner.nextInt();
+        
+        Stack<Integer> stack = new Stack<>();
+        int temp = Math.abs(number);
+        while (temp > 0) {
+            stack.push(temp % 10);
+            temp /= 10;
+        }
+        
+        int reversedNumber = 0;
+        int multiplier = 1;
+        while (!stack.isEmpty()) {
+            reversedNumber += stack.pop() * multiplier;
+            multiplier *= 10;
+        }
+        
+        if (number < 0) {
+            reversedNumber = -reversedNumber;
+        }
+        System.out.println("Число с обратным порядком цифр: " + reversedNumber);
+    }
+}
